@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 // -------Routers-------
 const userRouter = require('./routes/userRouter')
+const postRouter = require('./routes/postRouter')
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 // -------Routes-------
 app.use(userRouter);
+app.use(postRouter);
 
 const PORT = 4000;
 app.listen(PORT, () => {

@@ -7,7 +7,21 @@ async function getAllUsers(req, res) {
         return res.json({
             data
         })
-    } catch(err) {
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+    }
+}
+
+async function getSingleUser(req, res) {
+    const { id } = req.params;
+    try {
+        const data = await Users.getSingleUserFromDB(id)
+        return res.json({
+            data
+        })
+    } catch (err) {
         return res.status(404).json({
             message: err.message
         })
@@ -16,5 +30,6 @@ async function getAllUsers(req, res) {
 
 
 module.exports = {
-    getAllUsers
+    getAllUsers,
+    getSingleUser
 }
