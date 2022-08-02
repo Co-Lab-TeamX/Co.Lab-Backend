@@ -5,6 +5,8 @@ const cors = require('cors');
 // -------Routers-------
 const userRouter = require('./routes/userRouter')
 const postRouter = require('./routes/postRouter')
+const commentRouter = require('./routes/commentRouter')
+const interestedRouter = require('./routes/interestedRouter')
 
 const app = express();
 
@@ -15,6 +17,8 @@ app.use(cors());
 // -------Routes-------
 app.use(userRouter);
 app.use(postRouter);
+app.use(commentRouter);
+app.use(interestedRouter);
 
 const PORT = 4000;
 app.listen(PORT, () => {
@@ -29,13 +33,6 @@ rollback: npx knex migrate:rollback
 Create new seed: npx knex seed:make 01_users_seeds
 run seeds: npx knex seed:run
 
-create comment seeds
-comments route 
-.get('/comments')
-get all comments
-get all comments for a single post "/posts/:id/comments"
-post a comment ^
-delete a comment '/comments/:id'
 
 create like seeds
 like route
