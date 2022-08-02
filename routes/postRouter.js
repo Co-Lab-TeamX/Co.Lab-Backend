@@ -1,12 +1,12 @@
 const postRouter = require("express").Router();
 
-const { getAllPosts, getSinglePost, createNewPost } = require('../controllers/postController')
+const { getAllPosts, getSinglePost, createNewPost } = require('../controllers/postController');
 
-postRouter.get('/posts', getAllPosts)
+postRouter.get('/posts', getAllPosts);
 
-postRouter.get('/posts/:id', getSinglePost)
+postRouter.get('/posts/:id', getSinglePost);
 
-postRouter.post('/posts', createNewPost)
+postRouter.post('/posts', createNewPost);
 
 // delete route
 
