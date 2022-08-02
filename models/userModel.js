@@ -7,9 +7,9 @@ class Users {
         return dbResult.rows;
     }
 
-    static async getSingleUserFromDB(id) {
-        const sql = `SELECT * FROM users WHERE id=${id}`;
-        const dbResult = await pool.query(sql);
+    static async getSingleUserFromDB(user_id) {
+        const sql = `SELECT * FROM users WHERE id = ($1)`;
+        const dbResult = await pool.query(sql, [user_id]);
         return dbResult.rows;
     }
 }

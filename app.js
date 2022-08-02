@@ -28,5 +28,20 @@ rollback: npx knex migrate:rollback
 
 Create new seed: npx knex seed:make 01_users_seeds
 run seeds: npx knex seed:run
+
+create comment seeds
+comments route 
+.get('/comments')
+get all comments
+get all comments for a single post "/posts/:id/comments"
+post a comment ^
+delete a comment '/comments/:id'
+
+create like seeds
+like route
+/posts/:id/interested
+getAllLikes
+add like 
+delete like 
 */
 

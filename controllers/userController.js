@@ -15,9 +15,9 @@ async function getAllUsers(req, res) {
 }
 
 async function getSingleUser(req, res) {
-    const { id } = req.params;
+    const userId = req.params.id;
     try {
-        const data = await Users.getSingleUserFromDB(id)
+        const data = await Users.getSingleUserFromDB(userId)
         return res.json({
             data
         })
