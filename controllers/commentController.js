@@ -1,5 +1,4 @@
 const Comments = require('../models/commentModel');
-const pool = require('../db');
 
 async function getAllComments(req, res) {
     try {
@@ -14,10 +13,28 @@ async function getAllComments(req, res) {
     }
 }
 
-async function getCommentsFromSinglePost(req, res) {
-    const { post_id } = req.params;
+async function getAllCommentCounts(req, res) {
     try {
-        const data = await Comments.getCommentsFromSinglePostDB(post_id);
+        const data = await Comments.getAllCommentCountsFromDB();
+        return res.status(200).json({
+            data
+        });
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        });
+    }
+}
+
+async function getSpecificComment(req, res) {
+    const comment_id = req.params.comment_id;
+    if (!comment_id) {
+        return res.status(404).json({
+            message: "NO DATA PROVIDED",
+        });
+    }
+    try {
+        const data = await Comments.getSpecificCommentFromDB(comment_id);
         return res.status(200).json({
             data
         })
@@ -28,11 +45,15 @@ async function getCommentsFromSinglePost(req, res) {
     }
 }
 
-async function deleteCommentFromSinglePost(req, res) {
-    const { comment_id } = req.params;
-
+async function getCommentsForSinglePost(req, res) {
+    const post_id = req.params.post_id;
+    if (!post_id) {
+        return res.status(404).json({
+            message: "NO DATA PROVIDED",
+        });
+    }
     try {
-        const data = await Comments.deleteCommentFromSinglePostDB(comment_id);
+        const data = await Comments.getCommentsForSinglePostFromDB(post_id);
         return res.status(200).json({
             data
         })
@@ -43,8 +64,9 @@ async function deleteCommentFromSinglePost(req, res) {
     }
 }
 
-async function createNewComment(req, res) {
-    const { post_id, user_id, comment_body } = req.body;
+async function postNewComment(req, res) {
+    const post_id = req.params.post_id
+    const { user_id, comment_body } = req.body;
     const commentData = {
         post_id,
         user_id,
@@ -56,7 +78,26 @@ async function createNewComment(req, res) {
         });
     }
     try {
-        const data = await Comments.createNewCommentDB(commentData)
+        const data = await Comments.postNewCommentFromDB(commentData)
+        return res.status(200).json({
+            data
+        })
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+    }
+}
+
+async function deleteComment(req, res) {
+    const comment_id = req.params.comment_id;
+    if (!comment_id) {
+        return res.status(404).json({
+            message: "NO DATA PROVIDED",
+        });
+    }
+    try {
+        const data = await Comments.deleteCommentFromDB(comment_id);
         return res.status(200).json({
             data
         })
@@ -70,7 +111,9 @@ async function createNewComment(req, res) {
 
 module.exports = {
     getAllComments,
-    getCommentsFromSinglePost,
-    deleteCommentFromSinglePost,
-    createNewComment
+    getAllCommentCounts,
+    getSpecificComment,
+    getCommentsForSinglePost,
+    postNewComment,
+    deleteComment
 }
