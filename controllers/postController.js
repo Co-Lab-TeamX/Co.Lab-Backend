@@ -1,5 +1,4 @@
 const Posts = require('../models/postModel');
-const pool = require('../db');
 
 async function getAllPosts(req, res) {
     try {
@@ -14,10 +13,34 @@ async function getAllPosts(req, res) {
     }
 }
 
-async function getSinglePost(req, res) {
-    const { id } = req.params;
+async function getAllPostsForAUser(req, res) {
+    const user_id = req.params.user_id;
+    if (!user_id) {
+        return res.status(404).json({
+            message: "NO DATA PROVIDED",
+        });
+    }
     try {
-        const data = await Posts.getSinglePostFromDB(id);
+        const data = await Posts.getAllPostsForAUserFromDB(user_id);
+        return res.status(200).json({
+            data
+        })
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+    }
+}
+
+async function getSinglePost(req, res) {
+    const post_id = req.params.post_id;
+    if (!post_id) {
+        return res.status(404).json({
+            message: "NO DATA PROVIDED",
+        });
+    }
+    try {
+        const data = await Posts.getSinglePostFromDB(post_id);
         return res.status(200).json({
             data
         })
@@ -54,9 +77,29 @@ async function createNewPost(req, res) {
 
 }
 
+async function deletePost(req, res) {
+    const post_id = req.params.post_id;
+    if (!post_id) {
+        return res.status(404).json({
+            message: "NO DATA PROVIDED",
+        });
+    }
+    try {
+        const data = await Posts.deletePostFromDB(post_id);
+        return res.status(200).json({
+            data
+        })
+    } catch (err) {
+        return res.status(404).json({
+            message: err.message
+        })
+    }
+}
 
 module.exports = {
     getAllPosts,
+    getAllPostsForAUser,
     getSinglePost,
-    createNewPost
+    createNewPost,
+    deletePost
 }

@@ -1,16 +1,11 @@
-const { getAllInterested, getAllInterestedSingleUser, createNewInterested, deleteSingleInterested } = require("../controllers/interestedController");
-
 const interestedRouter = require("express").Router();
+const { getAllInterested, addInterested, deleteInterested } = require("../controllers/interestedController");
 
-interestedRouter.get('/interested', getAllInterested);
+interestedRouter.get('/posts/:post_id/interested', getAllInterested)
 
-interestedRouter.get('/interested/:user_id', getAllInterestedSingleUser);
+interestedRouter.post('/posts/:post_id/interested', addInterested)
 
-// not sending any new data do we keep this as a GET or POST?
-//should I reorder it to always have user_id and them post_id?
-interestedRouter.get('/interested/:post_id/:user_id', createNewInterested);
-
-interestedRouter.delete('/interested/:post_id/:user_id', deleteSingleInterested);
+interestedRouter.delete('/posts/:post_id/interested', deleteInterested);
 
 
 module.exports = interestedRouter;

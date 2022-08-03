@@ -1,14 +1,16 @@
 const commentRouter = require("express").Router();
+const { getAllComments, getAllCommentCounts, getSpecificComment, getCommentsForSinglePost, deleteComment, postNewComment } = require('../controllers/commentController');
 
-const { getAllComments, getCommentsFromSinglePost, deleteCommentFromSinglePost, createNewComment } = require('../controllers/commentController');
+commentRouter.get('/allcomments', getAllComments)
 
-commentRouter.get('/comments', getAllComments);
+commentRouter.get('/comments', getAllCommentCounts);
 
-// get all comments for a single post "/posts/:id/comments"
-commentRouter.get('/posts/:post_id/comments', getCommentsFromSinglePost);
+commentRouter.get('/comments/:comment_id', getSpecificComment)
 
-commentRouter.delete('/posts/:post_id/comments/:comment_id', deleteCommentFromSinglePost);
+commentRouter.get('/posts/:post_id/comments', getCommentsForSinglePost);
 
-commentRouter.post('/posts/:post_id/comments', createNewComment);
+commentRouter.post('/posts/:post_id/comments', postNewComment);
+
+commentRouter.delete('/comments/:comment_id', deleteComment);
 
 module.exports = commentRouter;

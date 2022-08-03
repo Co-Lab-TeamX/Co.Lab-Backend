@@ -11,6 +11,7 @@ exports.up = function (knex) {
         table.string('description');
         table.string('image');
         table.text('upload');
+        table.string('address');
         table.timestamp('time_posted').defaultTo(knex.fn.now());
     })
 };
