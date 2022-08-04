@@ -1,4 +1,6 @@
+require('dotenv').config()
 const { Pool } = require('pg')
+
 const connectionDevelopment = {
     database: process.env.DATABASE,
     user: process.env.DB_USERNAME,
