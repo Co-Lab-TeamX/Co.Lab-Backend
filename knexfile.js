@@ -15,11 +15,10 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
-      database: 'colabdb',
-      user:     'postgres',
-      password: '1'
+      connectionString: process.env.DATABASE_URL,
+      ssl: {rejectUnauthorized: false}
     },
     pool: {
       min: 2,
@@ -29,5 +28,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
 };
