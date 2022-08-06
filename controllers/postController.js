@@ -52,12 +52,13 @@ async function getSinglePost(req, res) {
 }
 
 async function createNewPost(req, res) {
-    const { user_id, title, description, image } = req.body;
+    const { user_id, title, description, image, location } = req.body;
     const postData = {
         user_id,
         title,
         description,
-        image
+        image,
+        location
     }
     if (!postData) {
         return res.status(404).json({

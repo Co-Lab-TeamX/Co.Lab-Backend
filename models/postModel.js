@@ -31,12 +31,12 @@ class Posts {
     }
 
     static async createNewPostDB(postData) {
-        const { user_id, title, description, image } = postData;
+        const { user_id, title, description, image, location } = postData;
         const sql = `
-        INSERT INTO posts (user_id, title, description, image) 
-        VALUES ($1, $2, $3, $4) 
+        INSERT INTO posts (user_id, title, description, image, location) 
+        VALUES ($1, $2, $3, $4, $5) 
         RETURNING *`;
-        const dbResult = await pool.query(sql, [user_id, title, description, image]);
+        const dbResult = await pool.query(sql, [user_id, title, description, image, location]);
         return dbResult.rows[0];
     }
 
