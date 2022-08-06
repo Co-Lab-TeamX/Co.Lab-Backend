@@ -4,13 +4,13 @@ const authCheck = async (req, res, next) => {
   const authToken = req.headers.token;
   if (!authToken) {
     return res.status(401).json({
-      data: "Not authorized",
+      data: "NOT AUTHORIZED",
     });
   }
 
   if (!authToken) {
     return res.status(401).json({
-      data: "Not authorized",
+      data: "NOT AUTHORIZED",
     });
   }
 
@@ -21,10 +21,10 @@ const authCheck = async (req, res, next) => {
     req.userId = decodedToken.userId
   } catch (err) {
     return res.status(401).json({
-      data: "Not authorized",
+      data: "NOT AUTHORIZED",
     });
   }
-
+  
   next();
 };
 

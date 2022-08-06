@@ -12,10 +12,10 @@ userRouter.post('/login', login);
 
 userRouter.post('/authenticate', authenticateUser);
 
-userRouter.get('/', checkAuth, (req, res) => {
-    res.json({
-        message: "AUTHORIZED"
-    })
-})
+// userRouter.get('/', checkAuth, (req, res) => {
+//     res.json({
+//         message: "AUTHORIZED"
+//     })
+// })
 
 module.exports = userRouter;
