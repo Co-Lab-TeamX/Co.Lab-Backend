@@ -36,7 +36,7 @@ class Comments {
         FROM comments 
         JOIN users ON comments.user_id = users.id
         WHERE post_id = ($1) 
-        ORDER BY time_posted ASC`;
+        ORDER BY time_posted DESC`;
         const dbResult = await pool.query(sql, [post_id]);
         return dbResult.rows;
     }

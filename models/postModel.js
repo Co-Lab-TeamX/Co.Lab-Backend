@@ -23,9 +23,9 @@ class Posts {
 
     static async getSinglePostFromDB(post_id) {
         const sql = `
-        SELECT * 
+        SELECT posts.*, users.profile_pic, users.username
         FROM posts 
-        WHERE id = ($1)`;
+        JOIN users ON posts.user_id = users.id WHERE posts.id = ($1)`;
         const dbResult = await pool.query(sql, [post_id]);
         return dbResult.rows[0];
     }
