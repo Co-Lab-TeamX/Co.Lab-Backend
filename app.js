@@ -7,7 +7,8 @@ const userRouter = require("./routes/userRouter");
 const postRouter = require("./routes/postRouter");
 const commentRouter = require("./routes/commentRouter");
 const interestedRouter = require("./routes/interestedRouter");
-const feedRouter = require("./routes/feedRouter")
+const feedRouter = require("./routes/feedRouter");
+const chatRouter = require("./routes/chatRouter");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(postRouter);
 app.use(commentRouter);
 app.use(interestedRouter);
 app.use(feedRouter);
+app.use(chatRouter);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
