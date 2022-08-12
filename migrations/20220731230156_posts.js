@@ -12,6 +12,12 @@ exports.up = function (knex) {
         table.string('image');
         table.text('upload');
         table.string('location');
+        table.string('category');
+        table.integer('quantity');
+        table.integer('weight');
+        table.integer('length');
+        table.integer('height');
+        table.integer('width');
         table.timestamp('time_posted').defaultTo(knex.fn.now());
     })
 };
