@@ -4,9 +4,14 @@
  */
 exports.seed = async function (knex) {
   await knex('posts').insert([
-    { description: 'new desk', image: 'https://www.ikea.com/us/en/images/products/arkelstorp-desk-black__0735967_pe740301_s5.jpg?f=s', title: 'Desk', user_id: 1, location: 'Queens' },
-    { description: 'new chair', image: 'https://assets.pbimgs.com/pbimgs/rk/images/dp/wcm/202209/1448/lorraine-tufted-chair-c.jpg', title: 'Chair', user_id: 1, location: 'Brooklyn' },
-    { description: 'new skateboard', image: 'https://m.media-amazon.com/images/I/61Z+qalFRqL._AC_SX679_.jpg', title: 'Skateboard', user_id: 1, location: 'Bronx' },
-    { description: 'old desk', image: 'https://www.ikea.com/us/en/images/products/arkelstorp-desk-black__0735967_pe740301_s5.jpg?f=s', title: 'Desk', user_id: 1, location: 'Bronx' },
+    { description: `New desk, can't find space for this but its brand new!`, image: 'https://www.ikea.com/us/en/images/products/arkelstorp-desk-black__0735967_pe740301_s5.jpg?f=s', title: 'New Desk, need it out my house ASAP!', user_id: 1, location: 'Queens' },
+    { description: `This chair is in mid condition, its at my mother in law's place`, image: 'https://assets.pbimgs.com/pbimgs/rk/images/dp/wcm/202209/1448/lorraine-tufted-chair-c.jpg', title: 'Mid condition chair', user_id: 1, location: 'Brooklyn' },
+    { description: `Rode it for a week, skateboarding is not my thing lol`, image: 'https://m.media-amazon.com/images/I/61Z+qalFRqL._AC_SX679_.jpg', title: 'Barely used Skateboard', user_id: 3, location: 'Bronx' },
+    { description: `Not working anymore, maybe some screen issues, anyone interested?`, image: 'https://pixl.varagesale.com/http://s3.amazonaws.com/hopshop-image-store-production/66166606/5da37d37760a3c9c33b6b3cc8790e115.jpg?_ver=large_uploader_thumbnail&w=640&h=640&fit=crop&rot=-270&s=3ca5168d22bd9da059ba174831258b64', title: 'Ipod', user_id: 2, location: 'Bronx' },
+    { description: `A few great reads, anyone interested in them?`, image: 'https://cdn.elearningindustry.com/wp-content/uploads/2016/05/top-10-books-every-college-student-read-1024x640.jpeg', title: 'Some Books!', user_id: 2, location: 'Staten Island' },
+    { description: `Had this shirt for a while now, never got a chance to wear it - too big. Size: XL`, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUpJemVTpWYmAvWQVILT0BJ1bKY_1Viy631w&usqp=CAU', title: 'Button down shirt', user_id: 1, location: 'Queens' },
+    { description: `Lost my receipt for this thing, anyone want to take it off my hands?`, image: 'https://cdn.shopify.com/s/files/1/0291/6427/3757/products/57001_Blender_2000x2000_442ab931-586e-4bad-8954-f8781dbabcb0_1949x.jpg?v=1637279861', title: 'Blender, used twice', user_id: 3, location: 'Manhattan' },
+    { description: `Lost the second one, anyone interested in just one speaker? Sounds slightly muffled`, image: 'https://m.media-amazon.com/images/I/51KZcUQIyiS._AC_SL1080_.jpg', title: '1 Speaker', user_id: 3, location: 'Manhattan' },
+    { description: `Anyone want this scribble board game? I've used it like 5 times - got too boring for me`, image: 'https://assets-prd.ignimgs.com/2022/05/12/classic-board-games-1652389030946.png?width=1280', title: 'Scribble board game', user_id: 2, location: 'Brooklyn' },
   ]);
 };
