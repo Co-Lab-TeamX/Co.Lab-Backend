@@ -14,6 +14,7 @@ exports.up = function (knex) {
         table.string('location');
         table.string('category');
         table.integer('quantity');
+        table.string('condition');
         table.integer('weight');
         table.integer('length');
         table.integer('height');
