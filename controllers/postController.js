@@ -52,13 +52,35 @@ async function getSinglePost(req, res) {
 }
 
 async function createNewPost(req, res) {
-    const { user_id, title, description, image, location } = req.body;
-    const postData = {
-        user_id,
+    // Need to parse image so that we can get the actual file
+    const {
+        userId,
         title,
         description,
+        category,
+        pickupType,
         image,
-        location
+        location,
+        streetAddress,
+        state,
+        zipCode,
+        quantity,
+        weight
+    } = req.body;
+
+    const postData = {
+        user_id: userId,
+        title,
+        description,
+        category,
+        pickup_type: pickupType,
+        image,
+        location,
+        street_address: streetAddress,
+        state,
+        zip_code: zipCode,
+        quantity,
+        weight
     }
     if (!postData) {
         return res.status(404).json({
