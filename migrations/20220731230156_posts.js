@@ -11,8 +11,13 @@ exports.up = function (knex) {
         table.string('description');
         table.string('image');
         table.text('upload');
-        table.string('location');
         table.string('category');
+        table.string('condition');
+        table.string('pickup_type');
+        table.string('location');
+        table.string('street_address');
+        table.string('state');
+        table.string('zip_code');
         table.integer('quantity');
         table.string('condition');
         table.integer('weight');
