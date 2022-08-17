@@ -19,7 +19,6 @@ exports.up = function (knex) {
         table.string('state');
         table.string('zip_code');
         table.integer('quantity');
-        table.string('condition');
         table.integer('weight');
         table.integer('length');
         table.integer('height');
