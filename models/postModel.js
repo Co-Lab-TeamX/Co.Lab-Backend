@@ -36,6 +36,7 @@ class Posts {
             title,
             description,
             category,
+            condition,
             pickup_type,
             image,
             location,
@@ -46,8 +47,8 @@ class Posts {
             weight
         } = postData;
         const sql = `
-        INSERT INTO posts (user_id, title, description, category, pickup_type, image, location, street_address, state, zip_code, quantity, weight) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) 
+        INSERT INTO posts (user_id, title, description, category, condition, pickup_type, image, location, street_address, state, zip_code, quantity, weight) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) 
         RETURNING *`;
         const dbResult = await pool.query(sql,
             [
