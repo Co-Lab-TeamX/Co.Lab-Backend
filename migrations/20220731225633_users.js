@@ -8,7 +8,7 @@ exports.up = function (knex) {
         table.string('username').notNullable()
         table.string('password').notNullable()
         table.string('email').notNullable()
-        table.string('profile_pic')
+        table.string('profile_pic').defaultTo('https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg')
         table.string('bio')
         table.string('location')
     })
