@@ -5,6 +5,13 @@ const cors = require("cors");
 const http = require('http');
 const { Server } = require('socket.io');
 
+// -------Routers-------
+const userRouter = require("./routes/userRouter");
+const postRouter = require("./routes/postRouter");
+const commentRouter = require("./routes/commentRouter");
+const interestedRouter = require("./routes/interestedRouter");
+
+
 const app = express();
 
 // -------Routers-------
@@ -51,8 +58,30 @@ app.use(feedRouter);
 app.use(chatRouter);
 
 const PORT = process.env.PORT || 4000;
+
 server.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
 });
 
 
+
+app.listen(PORT, () => {
+  console.log(`app listening on port ${PORT}`);
+});
+
+/*
+Create new table: npx knex migrate:make table_name
+migrate: npx knex migrate:latest
+rollback: npx knex migrate:rollback
+
+Create new seed: npx knex seed:make 01_users_seeds
+run seeds: npx knex seed:run
+
+
+create like seeds
+like route
+/posts/:id/interested
+getAllLikes
+add like 
+delete like 
+*/
