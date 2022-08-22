@@ -52,8 +52,9 @@ app.use(chatRouter);
 
 const PORT = process.env.PORT || 4000;
 
-server.listen(PORT, () => {
-  console.log(`app listening on port ${PORT}`);
+
+server.listen(5000, () => {
+  console.log(`app listening on port ${5000}`);
 });
 
 app.listen(PORT, () => {
