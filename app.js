@@ -10,18 +10,11 @@ const userRouter = require("./routes/userRouter");
 const postRouter = require("./routes/postRouter");
 const commentRouter = require("./routes/commentRouter");
 const interestedRouter = require("./routes/interestedRouter");
-
-
-const app = express();
-
-// -------Routers-------
-const userRouter = require("./routes/userRouter");
-const postRouter = require("./routes/postRouter");
-const commentRouter = require("./routes/commentRouter");
-const interestedRouter = require("./routes/interestedRouter");
 const feedRouter = require("./routes/feedRouter");
 const chatRouter = require("./routes/chatRouter");
 
+
+const app = express();
 
 // -------Middleware-------
 app.use(express.json());
@@ -62,8 +55,6 @@ const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
