@@ -21,7 +21,7 @@ class ChatModel {
 
     static async getAllContactsForAPostingFromDB(user_id) {
         const sql = `
-        SELECT DISTINCT(users.username), users.id
+        SELECT DISTINCT(users.username), users.id, users.profile_pic
         FROM chats 
         JOIN users 
         ON chats.receiver_id = users.id 
