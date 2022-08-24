@@ -18,6 +18,17 @@ class ChatModel {
         const dbResult = await pool.query(sql, [sender_id, receiver_id]);
         return dbResult.rows;
     }
+
+    static async getAllContactsForAPostingFromDB(user_id) {
+        const sql = `
+        SELECT DISTINCT(users.username), users.id
+        FROM chats 
+        JOIN users 
+        ON chats.receiver_id = users.id 
+        WHERE sender_id = $1`;
+        const dbResult = await pool.query(sql, [user_id]);
+        return dbResult.rows;
+    }
 }
 
 module.exports = ChatModel;
