@@ -14,7 +14,7 @@ class ChatController {
     }
 
     static getAllContactsForAPosting = async (req, res) => {
-        const { user_id } = req.body
+        const { user_id }  = req.params
         const allContacts = await ChatModel.getAllContactsForAPostingFromDB(user_id);
         return res.status(201).json(allContacts);
     }
