@@ -32,13 +32,36 @@ async function getSingleUser(req, res) {
 
 async function createUser(req, res) {
     const { username, password, email } = req.body
+
+    // Check if username and email is already taken
+    try {
+        const isUsernameTaken = await Users.getSingleUserByUsernameFromDB(username);
+
+        if (isUsernameTaken) {
+            return res.status(400).json({
+                message: 'An account with this username already exists, please create an account with a different username!'
+            })
+        }
+
+        const isEmailTaken = await Users.getSingleUserByEmailFromDB(email);
+        // if user exists already respond with a message
+        if (isEmailTaken) {
+            return res.status(400).json({
+                message: 'An account with this email already exists, please create an account with a different email address!'
+            })
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    //username and email are not taken so we can create a new account
+
     const hashedPassword = await bcrypt.hash(password, saltRounds)
     const userData = {
         username,
         hashedPassword,
         email,
     }
-
     if (!userData) {
         return res.status(400).json({
             message: 'NO USER INFO PROVIDED'

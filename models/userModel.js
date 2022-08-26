@@ -18,6 +18,24 @@ class Users {
         return dbResult.rows;
     }
 
+    static async getSingleUserByUsernameFromDB(username) {
+        const sql = `
+        SELECT * 
+        FROM users 
+        WHERE username = ($1)`;
+        const dbResult = await pool.query(sql, [username]);
+        return dbResult.rows[0];
+    }
+
+    static async getSingleUserByEmailFromDB(email) {
+        const sql = `
+        SELECT * 
+        FROM users 
+        WHERE email = ($1)`;
+        const dbResult = await pool.query(sql, [email]);
+        return dbResult.rows[0];
+    }
+
     static async createUserFromDB(userInfo) {
         const { username, hashedPassword, email } = userInfo;
         const sql = `
