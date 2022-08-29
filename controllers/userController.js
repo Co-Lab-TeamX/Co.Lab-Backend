@@ -98,14 +98,14 @@ async function login(req, res) {
         const user = await Users.loginFromDB(email)
         if (!user) {
             return res.status(401).json({
-                message: "INCORRECT EMAIL OR PASSWORD",
+                message: "Incorrect email or password"
             });
         }
 
         const passwordCorrect = await bcrypt.compare(password, user.password);
         if (!passwordCorrect) {
             return res.status(401).json({
-                message: "INCORRECT EMAIL OR PASSWORD",
+                message: "Incorrect email or password"
             });
         }
         const token = await generateToken(user.user_id);
