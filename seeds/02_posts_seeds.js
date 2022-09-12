@@ -36,7 +36,7 @@ exports.seed = async function (knex) {
       width: 70,
       height: 70,
       condition: 'Fair',
-      pickup_type: 'drop-off',
+      pickup_type: 'arrange-pickup',
       street_address: '222 Bond st',
       state: 'NY',
       zip_code: '11122'
@@ -173,7 +173,7 @@ exports.seed = async function (knex) {
       width: 70,
       height: 50,
       condition: 'Salvage',
-      pickup_type: 'drop-off',
+      pickup_type: 'arrange-pickup',
       street_address: '54 Flatbush ave',
       state: 'NY',
       zip_code: '34512'
@@ -191,7 +191,7 @@ exports.seed = async function (knex) {
       width: 70,
       height: 50,
       condition: 'Salvage',
-      pickup_type: 'drop-off',
+      pickup_type: 'arrange-pickup',
       street_address: '333 Broadway ave',
       state: 'NY',
       zip_code: '34512'
