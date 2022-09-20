@@ -53,27 +53,10 @@ app.use(chatRouter);
 const PORT = process.env.PORT || 4000;
 
 
-server.listen(5000, () => {
-  console.log(`app listening on port ${5000}`);
-});
+// server.listen(5000, () => {
+//   console.log(`app listening on port ${5000}`);
+// });
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
 });
-
-/*
-Create new table: npx knex migrate:make table_name
-migrate: npx knex migrate:latest
-rollback: npx knex migrate:rollback
-
-Create new seed: npx knex seed:make 01_users_seeds
-run seeds: npx knex seed:run
-
-
-create like seeds
-like route
-/posts/:id/interested
-getAllLikes
-add like 
-delete like 
-*/
