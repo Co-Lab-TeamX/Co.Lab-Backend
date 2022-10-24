@@ -24,7 +24,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ['https://colab-free-up.herokuapp.com', 'https://freeupnyc.netlify.app/'],
+    origin: ["http://localhost:3000", "https://freeupnyc.netlify.app/"],
     methods: ["GET", "POST"]
   }
 });
@@ -52,11 +52,6 @@ app.use(chatRouter);
 
 const PORT = process.env.PORT || 4000;
 
-
-// server.listen(5000, () => {
-//   console.log(`app listening on port ${5000}`);
-// });
-
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
 });
